@@ -1,4 +1,4 @@
-//
+// 
 //  GameLevelScene.m
 //  SuperKoalio
 //
@@ -35,7 +35,7 @@
     self.walls = [self.map layerNamed:@"walls"];
     self.hazards = [self.map layerNamed:@"hazards"];
     
-    self.player = [[Player alloc] initWithImageNamed:@"koalio_stand"];
+    self.player = [[Player alloc] initWithImageNamed:@"Pikachu"];
     self.player.position = CGPointMake(100, 50);
     self.player.zPosition = 15;
     [self.map addChild:self.player];
