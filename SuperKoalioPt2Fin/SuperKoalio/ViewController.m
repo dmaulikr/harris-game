@@ -38,6 +38,13 @@
   backwardLabel.textColor = [UIColor darkGrayColor];
   backwardLabel.text = @"Backward";
   [self.view addSubview:backwardLabel];
+  
+  CGRect jumpframe = CGRectMake(250, 160, 77, 23);
+  UILabel *jumpLabel =[[UILabel alloc] initWithFrame: jumpframe];
+  jumpLabel.textColor = [UIColor darkGrayColor];
+  jumpLabel.text = @"Jump";
+  [self.view addSubview:jumpLabel];
+
 }
 
 - (BOOL)shouldAutorotate
