@@ -215,7 +215,7 @@
 //3
 - (void)replay:(id)sender
 {
-  [[self.view viewWithTag:321] removeFromSuperview];
+  [sender removeFromSuperview];
   [self.view presentScene:[[GameLevelScene alloc] initWithSize:self.size]];
 }
 
@@ -226,7 +226,11 @@
     if (touchLocation.x > self.size.width / 2.0) {
       self.player.mightAsWellJump = YES;
     } else {
-      self.player.forwardMarch = YES;
+      if (touchLocation.y <=160) {
+        self.player.forwardMarch = YES;
+      } else {
+        self.player.backwardMarch = YES;
+      }
     }
   }
 }
@@ -235,6 +239,7 @@
   for (UITouch *touch in touches) {
     
     float halfWidth = self.size.width / 2.0;
+    float halfHeight = self.size.height / 2.0;
     CGPoint touchLocation = [touch locationInNode:self];
     
     //get previous touch and convert it to node space
@@ -242,11 +247,23 @@
     
     if (touchLocation.x > halfWidth && previousTouchLocation.x <= halfWidth) {
       self.player.forwardMarch = NO;
+      self.player.backwardMarch = NO;
       self.player.mightAsWellJump = YES;
     } else if (previousTouchLocation.x > halfWidth && touchLocation.x <= halfWidth) {
-      self.player.forwardMarch = YES;
+      if (touchLocation.y <=160) {
+        self.player.forwardMarch = YES;
+      } else {
+        self.player.backwardMarch = YES;
+      }
       self.player.mightAsWellJump = NO;
+    } else if (previousTouchLocation.y >halfHeight && touchLocation.y <= halfHeight) {
+      self.player.forwardMarch = YES;
+      self.player.backwardMarch = NO;
+    } else if (previousTouchLocation.y <= halfHeight && touchLocation.y > halfHeight) {
+      self.player.forwardMarch = NO;
+      self.player.backwardMarch = YES;
     }
+
   }
 }
 
@@ -256,6 +273,7 @@
     CGPoint touchLocation = [touch locationInNode:self];
     if (touchLocation.x < self.size.width / 2.0) {
       self.player.forwardMarch = NO;
+      self.player.backwardMarch = NO;
     } else {
       self.player.mightAsWellJump = NO;
     }

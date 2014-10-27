@@ -26,6 +26,18 @@
   
   // Present the scene.
   [skView presentScene:scene];
+  
+  CGRect frame = CGRectMake(21, 240, 67, 23);
+  UILabel *forwardLabel =[[UILabel alloc] initWithFrame: frame];
+  forwardLabel.textColor = [UIColor darkGrayColor];
+  forwardLabel.text = @"Forward";
+  [self.view addSubview:forwardLabel];
+  
+  CGRect backwardframe = CGRectMake(21, 80, 77, 23);
+  UILabel *backwardLabel =[[UILabel alloc] initWithFrame: backwardframe];
+  backwardLabel.textColor = [UIColor darkGrayColor];
+  backwardLabel.text = @"Backward";
+  [self.view addSubview:backwardLabel];
 }
 
 - (BOOL)shouldAutorotate
