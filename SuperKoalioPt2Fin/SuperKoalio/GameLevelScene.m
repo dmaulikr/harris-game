@@ -178,7 +178,7 @@
 }
 
 -(void)checkForWin {
-  if (self.player.position.x > 3130.0) {
+  if (self.player.position.x > 3360.0) {
     [self gameOver:1];
   }
 }
@@ -199,6 +199,9 @@
   SKLabelNode *endGameLabel = [SKLabelNode labelNodeWithFontNamed:@"Marker Felt"];
   endGameLabel.text = gameText;
   endGameLabel.fontSize = 40;
+  if (!won) {
+    endGameLabel.fontColor = [UIColor redColor];
+  }
   endGameLabel.position = CGPointMake(self.size.width / 2.0, self.size.height / 1.7);
   [self addChild:endGameLabel];
   
