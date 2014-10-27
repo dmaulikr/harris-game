@@ -206,13 +206,17 @@
   [self addChild:endGameLabel];
   
   //2
-  UIButton *replay = [UIButton buttonWithType:UIButtonTypeCustom];
-  replay.tag = 321;
-  UIImage *replayImage = [UIImage imageNamed:@"replay"];
-  [replay setImage:replayImage forState:UIControlStateNormal];
-  [replay addTarget:self action:@selector(replay:) forControlEvents:UIControlEventTouchUpInside];
-  replay.frame = CGRectMake(self.size.width / 2.0 - replayImage.size.width / 2.0, self.size.height / 2.0 - replayImage.size.height / 2.0, replayImage.size.width, replayImage.size.height);
-  [self.view addSubview:replay];
+  if (![self.view viewWithTag: 321]) {
+    UIButton *replay = [UIButton buttonWithType:UIButtonTypeCustom];
+    replay.tag = 321;
+    UIImage *replayImage = [UIImage imageNamed:@"replay"];
+    [replay setImage:replayImage forState:UIControlStateNormal];
+    [replay addTarget:self action:@selector(replay:) forControlEvents:UIControlEventTouchUpInside];
+    replay.frame = CGRectMake(self.size.width / 2.0 - replayImage.size.width / 2.0, self.size.height / 2.0 - replayImage.size.height / 2.0, replayImage.size.width, replayImage.size.height);
+    [self.view addSubview:replay];
+  } else {
+    NSLog(@"tried to display more than 1 replay button");
+  }
 }
 
 //3
