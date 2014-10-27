@@ -256,10 +256,10 @@
         self.player.backwardMarch = YES;
       }
       self.player.mightAsWellJump = NO;
-    } else if (previousTouchLocation.y >halfHeight && touchLocation.y <= halfHeight) {
+    } else if (touchLocation.x <= 160 && previousTouchLocation.y >halfHeight && touchLocation.y <= halfHeight) {
       self.player.forwardMarch = YES;
       self.player.backwardMarch = NO;
-    } else if (previousTouchLocation.y <= halfHeight && touchLocation.y > halfHeight) {
+    } else if (touchLocation.x <= 160 && previousTouchLocation.y <= halfHeight && touchLocation.y > halfHeight) {
       self.player.forwardMarch = NO;
       self.player.backwardMarch = YES;
     }
